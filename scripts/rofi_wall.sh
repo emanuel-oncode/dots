@@ -19,7 +19,7 @@ done
 
 CHOICE=$(echo -e "$ROFI_LIST" | rofi \
   -dmenu -i -show-icons \
-  -p "Wallpapers" \
+  -p "  " \
   -theme ~/.config/rofi/wall_menu.rasi)
 
 [ -z "$CHOICE" ] && exit 0
