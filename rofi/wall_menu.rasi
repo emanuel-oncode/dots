@@ -1,7 +1,3 @@
-/* ═══════════════════════════════════════ */
-/* Rofi Wallpaper Selector - Glass Style */
-/* ═══════════════════════════════════════ */
-
 configuration {
     modi: "drun";
     show-icons: true;
@@ -9,125 +5,90 @@ configuration {
     font: "JetBrains Mono 13";
 }
 
-/* Importa colores de pywal si usas */
-@import "~/.cache/wal/colors-rofi-dark.rasi"
+/* @import "~/.cache/wal/colors-rofi-dark.rasi" */
 
-/* Reset */
 * {
-    background-color: transparent; /* Corregido: antes era solo 'background' */
-    text-color: @foreground;
+    background-color: transparent;
+    text-color: #ffffff;
     border: 0;
 }
 
-/* ═══════════════════════════════════════ */
-/* VENTANA PRINCIPAL (glass + blur)      */
-/* ═══════════════════════════════════════ */
+separator {
+    enabled: false;
+}
+
 window {
     location: center;
     anchor: center;
     width: 900px;
-    /*height: 200px;*/
 
-    background-color: rgba(20, 20, 20, 0.55);
-    /*border-radius: 22px;*/
-    border: 0px;
-    border-color: rgba(255,255,255,0.08);
+    background-color: rgba(20,20,20,0.55);
+    border-radius: 18px;
+    padding: 12px;
 
-    padding: 18px;
-
-    /* sombra suave */
     transparency: "real";
 }
 
-/* ═══════════════════════════════════════ */
-/* CONTENEDOR GENERAL                   */
-/* ═══════════════════════════════════════ */
 mainbox {
-    spacing: 12px;
+    spacing: 8px;
+    children: [ "inputbar", "listview" ];
 }
 
-/* ═══════════════════════════════════════ */
-/* INPUT (barra de búsqueda)            */
-/* ═══════════════════════════════════════ */
 inputbar {
-    background-color: rgba(255,255,255,0.08);
-    border-radius: 14px;
-    padding: 10px 10px;
-    spacing: 10px;
+    background-color: rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 10px;
 }
 
 prompt {
     enabled: true;
+    content: "wazaa";
     text-color: @foreground;
-    content: " ";
 }
 
 entry {
-    placeholder: " Wallpapers";
+    placeholder: "Wallpapers";
     placeholder-color: rgba(255,255,255,0.4);
 }
 
-/* ═══════════════════════════════════════ */
-/* LISTA (100% horizontal)              */
-/* ═══════════════════════════════════════ */
+inputbar {
+    background-color: rgba(255,255,255,0.06);
+    border-radius: 12px 12px 0px 0px;
+    padding: 10px;
+}
+
 listview {
     layout: horizontal;
-    spacing: 14px;
+    spacing: 12px;
     fixed-height: true;
-    scrollbar: true; /* Activado para desplazar hacia los lados */
-    /* columns y lines eliminados para evitar conflictos con el layout horizontal */
+    scrollbar: true;
+
+    background-color: rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 10px;
 }
 
-/* ═══════════════════════════════════════ */
-/* ELEMENTO (cada wallpaper)            */
-/* ═══════════════════════════════════════ */
 element {
     orientation: vertical;
-    border-radius: 12px;
+    border-radius: 10px;
     background-color: rgba(255,255,255,0.04);
-    padding: 0px;
 }
 
-/* ── ESTOS ESTADOS ARREGLAN QUE LAS DEMÁS IMÁGENES NO SE VEAN ── */
-element normal.normal,
-element alternate.normal {
-    background-color: transparent;
-    text-color: inherit;
-}
-
-/* Imagen */
 element-icon {
-    size: 277px;
-    border-radius: 1px;
-    background-color: transparent;
+    size: 276px;
 }
 
-/* Texto (nombre archivo) */
 element-text {
     enabled: false;
 }
 
-/* ═══════════════════════════════════════ */
-/* ELEMENTO SELECCIONADO                */
-/* ═══════════════════════════════════════ */
 element selected {
-    background-color: rgba(255,255,255,0.12);
-    border: 1px;
-    border-color: @foreground;
-}
-
-/* Glow tipo spotlight */
-element selected.normal {
     background-color: rgba(255,255,255,0.15);
+    border: 1px;
+    border-color: #ffffff;
 }
 
-/* ═══════════════════════════════════════ */
-/* SCROLL (oculto pero suave)           */
-/* ═══════════════════════════════════════ */
 scrollbar {
     width: 4px;
     handle-color: rgba(255,255,255,0.2);
-    handle-width: 4px;
-    border-radius: 10px;
-    background-color: transparent;
 }
